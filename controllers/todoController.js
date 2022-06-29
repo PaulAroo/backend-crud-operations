@@ -38,7 +38,6 @@ const updateTodo = (req, res) => {
 
 const deleteTodo = (req, res) => {
   const id = req.params.id;
-  console.log(id);
   todoModel.findByIdAndDelete(id, (err, data) => {
     if (err) return res.status(400).json({ error: "failed to delete" });
     else return res.status(200).json({ message: "todo deleted", data });
