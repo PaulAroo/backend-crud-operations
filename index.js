@@ -2,6 +2,7 @@ const { json } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes/todoRoutes");
+require("dotenv").config();
 
 const app = express();
 
@@ -10,9 +11,7 @@ app.use(json());
 app.use("/", routes);
 
 const port = process.env.PORT || 3030;
-
-const DbURI =
-  "mongodb+srv://zuri-backend:zuriThrills@cluster0.67111w7.mongodb.net/?retryWrites=true&w=majority";
+const DbURI = process.env.DbURI;
 
 mongoose
   .connect(DbURI)
